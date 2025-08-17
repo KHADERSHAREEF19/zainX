@@ -1,0 +1,158 @@
+#!/usr/bin/env python3
+# fingrecon.py
+
+import argparse
+import requests
+from bs4 import BeautifulSoup
+import time
+
+def print_banner():
+    """Prints the banner of the tool."""
+    # ANSI escape codes for colors
+    RED = "\033[91m"
+    RESET = "\033[0m"
+
+    banner = r"""                                                                                    
+                                                                                    
+ZZZZZZZZZZZZZZZZZZZ                    iiii                    XXXXXXX       XXXXXXX
+Z:::::::::::::::::Z                   i::::i                   X:::::X       X:::::X
+Z:::::::::::::::::Z                    iiii                    X:::::X       X:::::X
+Z:::ZZZZZZZZ:::::Z                                             X::::::X     X::::::X
+ZZZZZ     Z:::::Z    aaaaaaaaaaaaa   iiiiiii nnnn  nnnnnnnn    XXX:::::X   X:::::XXX
+        Z:::::Z      a::::::::::::a  i:::::i n:::nn::::::::nn     X:::::X X:::::X   
+       Z:::::Z       aaaaaaaaa:::::a  i::::i n::::::::::::::nn     X:::::X:::::X    
+      Z:::::Z                 a::::a  i::::i nn:::::::::::::::n     X:::::::::X     
+     Z:::::Z           aaaaaaa:::::a  i::::i   n:::::nnnn:::::n     X:::::::::X     
+    Z:::::Z          aa::::::::::::a  i::::i   n::::n    n::::n    X:::::X:::::X    
+   Z:::::Z          a::::aaaa::::::a  i::::i   n::::n    n::::n   X:::::X X:::::X   
+ZZZ:::::Z     ZZZZZa::::a    a:::::a  i::::i   n::::n    n::::nXXX:::::X   X:::::XXX
+Z::::::ZZZZZZZZ:::Za::::a    a:::::a i::::::i  n::::n    n::::nX::::::X     X::::::X
+Z:::::::::::::::::Za:::::aaaa::::::a i::::::i  n::::n    n::::nX:::::X       X:::::X
+Z:::::::::::::::::Z a::::::::::aa:::ai::::::i  n::::n    n::::nX:::::X       X:::::X
+ZZZZZZZZZZZZZZZZZZZ  aaaaaaaaaa  aaaaiiiiiiii  nnnnnn    nnnnnnXXXXXXX       XXXXXXX
+
+                                                       
+                    . .        *#((///.,,.                            
+                               ......*.  .***       ,                 
+                       .    * .,**..,,.,*,*,.,,/*///#, . . . .        
+                    (*,,.....*/*.**,*,. ,*,  .,,,.,,*/*/(%(,.         
+                        /*,  .,**. ,**. ..,,  . .,,../,,*,/(//.       
+                          .**.,*/,,. .,  **,,.   .,...,.,,*,,,**/.    
+                         ..**,*.,.,    ,,,,          .. ...,*,,*/*/#/,
+                         **** ..,.. ,,..             .   .,..,,.,*//(,
+                        ,/*/. .,*,,,,.,...,,. ...      ... .  . ,..**/
+                        .,#/.,   .,,*,*,.*/....*, ..   ......,. .. ..,
+                         (,*,  ,/.. */.**,.,.....,, . ..  ...,     , .
+                        /*,.,,*** ***///,....,,.....   ...... .  .    
+                      *,/*/,,/,,..*((*(#(((/,,(/*.,. ...   . .,..,    
+                    ****////(#/,,*/.(/#%##(/*/.,/*,..,..,,..., , .   .
+                 #,,**//*//**(/*///,**((#(//**,/*,,...,.*,,.,*., . .  
+               /(,,*,**//,***,,////****/(%%#///***,.,,,,,,,.* ..,,, . 
+             .,*.  .**/,/.,.,,.. .**//(/(#%##/(/,,**,,.....,,.,,,..   
+                 //*/,,,.,,,  ,/####(((/###/*.***,,,      .,..,,. .., 
+                     *//(##/      *%((/(((**/*,*   . ..,,..,,.,..,.* ,
+       ,                           .(#(((//,.,,,.  .,*,,.*,.,,..,,.,*.
+                                    .#%#(*(/,,,.,,,.*,,,*.,*,,...*.*..
+                                     *&&%#(***,**,./**(//*,*,***.,. ..
+                                      (%%#(/***,***.*///,//*,*, ......
+                                     /#((///,,*,,*((/**,,*,..... .. 
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+                                                                                    
+    """
+    print(f"{RED}{banner}{RESET}")
+    print("Developed by MacabreCerberus")
+    print("==============================================================")
+    print("==============================================================")
+
+
+def search_google(name):
+    """
+    Searches for a name on Google.
+
+    Args:
+        name (str): The name to search for.
+
+    Returns:
+        list: A list of URLs found in the search results.
+    """
+    print(f"\n[*] Searching Google for: {name}")
+    results = []
+    try:
+        search_query = f'"{name}"'
+        url = f"https://www.google.com/search?q={search_query}"
+        headers = {
+            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36"
+        }
+        response = requests.get(url, headers=headers)
+        response.raise_for_status()  # Raise an exception for bad status codes
+
+        soup = BeautifulSoup(response.text, 'html.parser')
+        
+        for g in soup.find_all('div', class_='g'):
+            links = g.find_all('a')
+            if links:
+                link = links[0]['href']
+                if link.startswith('http'):
+                    results.append(link)
+
+        if not results:
+            print("[-] No direct links found on the first page of Google.")
+        else:
+            for result in results:
+                print(f"[+] Found: {result}")
+
+    except requests.exceptions.RequestException as e:
+        print(f"[!] Error during Google search: {e}")
+    
+    return results
+
+def search_social_media(name):
+    """
+    Checks for the existence of a username on popular social media platforms.
+
+    Args:
+        name (str): The username to check.
+    """
+    print(f"\n[*] Searching Social Media for username: {name}")
+
+    sites = {
+        "Twitter": f"https://twitter.com/{name}",
+        "Instagram": f"https://www.instagram.com/{name}",
+        "GitHub": f"https://github.com/{name}",
+        "LinkedIn": f"https://www.linkedin.com/in/{name}",
+        "Reddit": f"https://www.reddit.com/user/{name}",
+        "Pinterest": f"https://www.pinterest.com/{name}/"
+    }
+
+    for site, url in sites.items():
+        try:
+            response = requests.get(url, timeout=5)
+            if response.status_code == 200:
+                print(f"[+] {site}: Profile found at {url}")
+            else:
+                print(f"[-] {site}: Profile not found.")
+        except requests.exceptions.RequestException as e:
+            print(f"[!] Error checking {site}: {e}")
+        time.sleep(1) # Be a good netizen
+
+def main():
+    """Main function to parse arguments and run the tool."""
+    print_banner()
+    parser = argparse.ArgumentParser(description="zainX - An OSINT tool for name reconnaissance.")
+    parser.add_argument("name", help="The name or username to search for.")
+    
+    args = parser.parse_args()
+    
+    name_to_search = args.name
+
+    search_google(name_to_search)
+    search_social_media(name_to_search.replace(" ", "")) # Remove spaces for username search
+
+
+if __name__ == "__main__":
+    main()
