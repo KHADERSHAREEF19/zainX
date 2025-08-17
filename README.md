@@ -12,7 +12,7 @@ You can install zainX directly from GitHub using `git`. This will automatically 
 Open your terminal and run:
 
 ```bash
-git clone https://github.com/KHADERSHAREEF19/zainX.git(https://github.com/KHADERSHAREEF19/zainX.git)
+git clone https://github.com/KHADERSHAREEF19/zainX.git
 ```
 
 ## Usage
