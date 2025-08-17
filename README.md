@@ -6,14 +6,13 @@ zainX is a simple command-line OSINT (Open Source Intelligence) tool written in 
 
 ## Installation
 
-You can install zainX directly from GitHub using `pip`. This will automatically install all dependencies and add the `zainX` command to your system path.
+You can install zainX directly from GitHub using `git`. This will automatically install all dependencies and add the `zainX` command to your system path.
 
 Open your terminal and run:
 
 ```bash
-pip install git+[https://github.com/YOUR_USERNAME/zainX.git](https://github.com/YOUR_USERNAME/zainX.git)
+git clone https://github.com/KHADERSHAREEF19/zainX.git(https://github.com/KHADERSHAREEF19/zainX.git)
 ```
-**Note**: Replace `YOUR_USERNAME` with the actual username for the repository.
 
 ## Usage
 
