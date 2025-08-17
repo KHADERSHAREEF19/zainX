@@ -1,4 +1,4 @@
-# Fingrecon 🦅
+# zainX 🦅
 
 Fingrecon is a simple command-line OSINT (Open Source Intelligence) tool written in Python. It's designed to help you find information about a specific name or username across the internet.
 
@@ -19,10 +19,10 @@ Once installed, you can run the tool from any directory in your terminal.
 
 #### Searching for a Full Name
 ```bash
-fingrecon "John Doe"
+zainX "Hacker"
 ```
 
 #### Searching for a Username
 ```bash
-fingrecon johndoe
+zainX Hacker
 ```
