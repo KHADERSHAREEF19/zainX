@@ -1,4 +1,4 @@
-# zainX 🦅
+# zainX 🐺
 
 zainX is a simple command-line OSINT (Open Source Intelligence) tool written in Python. It's designed to help you find information about a specific name or username across the internet.
 
