@@ -4,7 +4,7 @@ zainX is a simple command-line OSINT (Open Source Intelligence) tool written in 
 
 ![My project's user interface](https://github.com/KHADERSHAREEF19/zainX/blob/main/banner.png)
 
-## Installation
+## 🚀Installation
 
 You can install zainX directly from GitHub using `git`. This will automatically install all dependencies and add the `zainX` command to your system path.
 
