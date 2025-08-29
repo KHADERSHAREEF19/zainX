@@ -2,7 +2,7 @@
 
 zainX is a simple command-line OSINT (Open Source Intelligence) tool written in Python. It's designed to help you find information about a specific name or username across the internet.
 
-![My project's user interface]()
+![My project's user interface](https://github.com/KHADERSHAREEF19/zainX/blob/main/banner.png)
 
 ## Installation
 
