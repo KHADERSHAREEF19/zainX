@@ -14,23 +14,14 @@ def print_banner():
 
     banner = r"""                                                                                    
                                                                                     
-ZZZZZZZZZZZZZZZZZZZ                    iiii                    XXXXXXX       XXXXXXX
-Z:::::::::::::::::Z                   i::::i                   X:::::X       X:::::X
-Z:::::::::::::::::Z                    iiii                    X:::::X       X:::::X
-Z:::ZZZZZZZZ:::::Z                                             X::::::X     X::::::X
-ZZZZZ     Z:::::Z    aaaaaaaaaaaaa   iiiiiii nnnn  nnnnnnnn    XXX:::::X   X:::::XXX
-        Z:::::Z      a::::::::::::a  i:::::i n:::nn::::::::nn     X:::::X X:::::X   
-       Z:::::Z       aaaaaaaaa:::::a  i::::i n::::::::::::::nn     X:::::X:::::X    
-      Z:::::Z                 a::::a  i::::i nn:::::::::::::::n     X:::::::::X     
-     Z:::::Z           aaaaaaa:::::a  i::::i   n:::::nnnn:::::n     X:::::::::X     
-    Z:::::Z          aa::::::::::::a  i::::i   n::::n    n::::n    X:::::X:::::X    
-   Z:::::Z          a::::aaaa::::::a  i::::i   n::::n    n::::n   X:::::X X:::::X   
-ZZZ:::::Z     ZZZZZa::::a    a:::::a  i::::i   n::::n    n::::nXXX:::::X   X:::::XXX
-Z::::::ZZZZZZZZ:::Za::::a    a:::::a i::::::i  n::::n    n::::nX::::::X     X::::::X
-Z:::::::::::::::::Za:::::aaaa::::::a i::::::i  n::::n    n::::nX:::::X       X:::::X
-Z:::::::::::::::::Z a::::::::::aa:::ai::::::i  n::::n    n::::nX:::::X       X:::::X
-ZZZZZZZZZZZZZZZZZZZ  aaaaaaaaaa  aaaaiiiiiiii  nnnnnn    nnnnnnXXXXXXX       XXXXXXX
-
+ ███████╗ █████╗ ██╗███╗   ██╗    ██╗  ██╗
+ ╚══███╔╝██╔══██╗██║████╗  ██║    ╚██╗██╔╝
+   ███╔╝ ███████║██║██╔██╗ ██║     ╚███╔╝ 
+  ███╔╝  ██╔══██║██║██║╚██╗██║     ██╔██╗ 
+ ███████╗██║  ██║██║██║ ╚████║    ██╔╝ ██╗
+ ╚══════╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝    ╚═╝  ╚═╝
+                                         
+                                                          
                                                        
                     . .        *#((///.,,.                            
                                ......*.  .***       ,                 
